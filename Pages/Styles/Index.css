@@ -1,0 +1,91 @@
+/* Styles for brand logo */
+.logoMarca {
+    /* Set width to 100% */
+    width: 100%;
+    /* Set height to 60% */
+    height: 60%;
+}
+
+/* Styles for login button */
+.LogIn {
+    /* Set width to 45% */
+    width: 80%;
+    /* Add margin */
+    margin: 2%;
+}
+
+/* Styles for register button */
+.Register {
+    /* Set width to 45% */
+    width: 80%;
+    /* Add margin */
+    margin: 2%;
+}
+
+/* Styling for the card container */
+.card {
+    width: 100%; /* Set width */
+    height: 300px; /* Set height */
+    background-color: #f0f0f0; /* Set background color */
+    position: relative; /* Set position */
+    perspective: 1000px; /* Add perspective for 3D effect */
+    margin-bottom: 40%;
+}
+
+.card-img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling for the inner part of the card */
+.card-inner {
+    width: 100%; /* Take up full width */
+    height: 100%; /* Take up full height */
+    position: absolute; /* Set position */
+    transition: transform 1s ease; /* Smooth transition for transform */
+    transform-style: preserve-3d; /* Preserve 3D transformation */
+}
+
+/* Styling for the card inner part when hovered */
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Rotate the card on hover */
+}
+
+/* Styling for the front and back faces of the card */
+.front,
+.back {
+    width: 100%; /* Take up full width */
+    height: 100%; /* Take up full height */
+    position: absolute; /* Set position */
+    backface-visibility: hidden; /* Hide the backface when rotating */
+}
+
+/* Styling for the back face of the card */
+.back {
+    transform: rotateY(180deg); /* Initially hide the back side */
+    background-color: #e0e0e0; /* Set background color */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    opacity: 0; /* Initially hide the back side */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+/* Styling for the back face of the card when hovered */
+.card:hover .back {
+    opacity: 1; /* Show the back side on hover */
+}
+
+body {
+    background-color: #faf9f8;
+}
+
+/* Styles for footer */
+#footer {
+    /* Add padding to top */
+    padding-top: 48px;
+    /* Set width to 100% */
+    width: 100%;
+    /* Hide overflow */
+    overflow: hidden;
+} 

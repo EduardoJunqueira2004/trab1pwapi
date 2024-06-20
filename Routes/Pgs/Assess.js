@@ -1,11 +1,12 @@
-const assessRouter = require('express').Router();
-const controller = require('../../Controllers/Pgs/Assess');
+const assessRouter = require('express').Router(); // Create a new router instance from Express
+const controller = require('../../Controllers/Pgs/Assess'); // Import the Assess controller
 
-//CRUD para avaliação
-assessRouter.get('/', controller.getAll); //le todas
-assessRouter.get('/:id', controller.getById); //le uma avaliação indicado pelo id
-assessRouter.post('/create', controller.create); //criar uma avaliação
-assessRouter.put('/update/:id', controller.update); //atualizar uma avaliação
-assessRouter.delete('/delete/:id', controller.delete); //apagar uma avaliação
+// CRUD operations for assessments
+assessRouter.get('/', controller.getAll); // Get all assessments
+assessRouter.get('/:id', controller.getById); // Get an assessment by id
+assessRouter.post('/create', controller.create); // Create a new assessment
+assessRouter.put('/update/:id', controller.update); // Update an assessment by id
+assessRouter.delete('/delete/:id', controller.delete); // Delete an assessment by id
 
+// Export the router to be used in other parts of the application
 module.exports = assessRouter;

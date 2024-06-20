@@ -1,33 +1,43 @@
-const express = require('express');
-const path = require('path');
-const controller = require('../../Controllers/Pgs/Products');
-const productsRouter = express.Router();
+// /Routes/Pgs/Products.js
 
-// CRUD para produtos
-productsRouter.get('/', controller.getAll); // le todos
-productsRouter.get('/:id', controller.getById); // le um produto indicado pelo id
-productsRouter.post('/create', controller.create); // criar um produto
-productsRouter.put('/update/:id', controller.update); // atualizar um produto
-productsRouter.delete('/delete/:id', controller.delete); // apagar um produto
+const express = require('express'); // Import the Express framework
+const path = require('path'); // Import the path module to work with file paths
+const controller = require('../../Controllers/Pgs/Products'); // Import the Products controller
 
-// Function to get Products by Category
-productsRouter.get('/category/:categoria', controller.getByCategory);
-// Function to get Products by Image
-productsRouter.get('/image/:imagem', controller.getByImage);
-// Function to get Products by Manufacturer
-productsRouter.get('/manufacturer/:fabricante', controller.getByManufacturer);
-// Function to get Products by Price
-productsRouter.get('/price/:preco', controller.getByPrice);
-// Function to get Products by Name
-productsRouter.get('/name/:nome', controller.getByName);
-// Function to get Products by ID Category
-productsRouter.get('/id_category/:id_categoria', controller.getByIdCategory);
-// Function to get Products by Detalhes
-productsRouter.get('/detalhes/:detalhes', controller.getByDetalhes);
+const productsRouter = express.Router(); // Create a new router instance from Express
 
-// Rota para servir o HTML
+// CRUD operations for products
+productsRouter.get('/', controller.getAll); // Get all products
+productsRouter.get('/:id', controller.getById); // Get a product by id
+productsRouter.post('/create', controller.create); // Create a new product
+productsRouter.put('/update/:id', controller.update); // Update a product by id
+productsRouter.delete('/delete/:id', controller.delete); // Delete a product by id
+
+// Function to get products by category
+productsRouter.get('/category/:categoria', controller.getByCategory); // Get products by category
+// Function to get products by image
+productsRouter.get('/image/:imagem', controller.getByImage); // Get products by image
+// Function to get products by manufacturer
+productsRouter.get('/manufacturer/:fabricante', controller.getByManufacturer); // Get products by manufacturer
+// Function to get products by price
+productsRouter.get('/price/:preco', controller.getByPrice); // Get products by price
+// Function to get products by name
+productsRouter.get('/name/:nome', controller.getByName); // Get products by name
+// Function to get products by category ID
+productsRouter.get('/id_category/:id_categoria', controller.getByIdCategory); // Get products by category ID
+// Function to get products by details
+productsRouter.get('/detalhes/:detalhes', controller.getByDetalhes); // Get products by details
+// Wishlist routes
+productsRouter.post('/wishlist', controller.addToWishlist);
+productsRouter.get('/wishlist/:userId', controller.getWishlist);
+productsRouter.delete('/wishlist/:userId/:productId', controller.removeFromWishlist);
+
+
+
+// Route to serve the HTML for a specific product by id
 productsRouter.get('/product/:id', (req, res) => {
     res.sendFile(path.join(__dirname, '../../public/Product.html'));
 });
 
+// Export the router to be used in other parts of the application
 module.exports = productsRouter;
